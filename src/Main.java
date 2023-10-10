@@ -1,3 +1,5 @@
+import jdk.jfr.Description;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -33,13 +35,37 @@ class IncorrectDayException extends Exception {
     }
 }
 
+
+/**
+ * Główna klasa aplikacji programu PESEL
+ */
 public class Main {
 
+    /**
+     * Indeks początkowy cyfry miesiąca w numerze PESEL.
+     */
     public static final int MONTH_START_INDEX = 2;
+
+    /**
+     * Indeks końcowy cyfry miesiąca w numerze PESEL.
+     */
     public static final int MONTH_END_INDEX = 4;
+
+    /**
+     * Maksymalna wartość cyfry miesiąca w numerze PESEL.
+     */
     public static final int MAX_MONTH = 32;
+
+    /**
+     * Długość numeru PESEL.
+     */
     public static final int PESEL_LENGTH = 11;
 
+    /**
+     * Metoda główna programu, która przyjmuje numer PESEL jako argument i dokonuje jego weryfikacji.
+     *
+     * @param args Argumenty wywołania programu (jedna linia zawierająca numer PESEL).
+     */
     public static void main(String[] args) {
 
         System.out.println("Podaj pesel: ");
@@ -95,8 +121,8 @@ public class Main {
     }
 
     /**
-     * Pobiera miesiąc z ciągu znaków reprezentującego PESEL.
-     * @param s Ciąg znaków PESEL.
+     * Pobiera miesiąc z ciągu znaków reprezentującego pesel.
+     * @param s Ciąg znaków pesel.
      * @return Miesiąc jako liczba całkowita.
      */
     public static int getMonth(String s) {
@@ -104,8 +130,8 @@ public class Main {
     }
 
     /**
-     * Pobiera rok z ciągu znaków reprezentującego PESEL.
-     * @param s Ciąg znaków PESEL.
+     * Pobiera rok z ciągu znaków reprezentującego pesel.
+     * @param s Ciąg znaków pesel.
      * @return Rok jako liczba całkowita.
      */
     public static int getYear(String s) {
@@ -113,8 +139,8 @@ public class Main {
     }
 
     /**
-     * Pobiera dzień z ciągu znaków reprezentującego PESEL.
-     * @param s Ciąg znaków PESEL.
+     * Pobiera dzień z ciągu znaków reprezentującego pesel.
+     * @param s Ciąg znaków pesel.
      * @return Dzień jako liczba całkowita.
      */
     public static int getDay(String s) {
@@ -122,8 +148,8 @@ public class Main {
     }
 
     /**
-     * Sprawdza, czy miesiąc w PESELu jest poprawny (1-12).
-     * @param s Ciąg znaków PESEL.
+     * Sprawdza, czy miesiąc w peselu jest poprawny (1-12).
+     * @param s Ciąg znaków pesel.
      * @return `true`, jeśli miesiąc jest poprawny; `false` w przeciwnym razie.
      */
     public static boolean checkIfMonthValid(String s) {
@@ -131,8 +157,8 @@ public class Main {
     }
 
     /**
-     * Sprawdza, który miesiąc reprezentowany jest w PESELu.
-     * @param s Ciąg znaków PESEL.
+     * Sprawdza, który miesiąc reprezentowany jest w peselu.
+     * @param s Ciąg znaków pesel.
      * @return Miesiąc jako liczba całkowita (1-12).
      */
     public static int checkWhichMonth(String s) {
@@ -141,8 +167,8 @@ public class Main {
     }
 
     /**
-     * Oblicza rok na podstawie PESELu.
-     * @param s Ciąg znaków PESEL.
+     * Oblicza rok na podstawie peselu.
+     * @param s Ciąg znaków pesel.
      * @return Rok jako liczba całkowita.
      */
     public static int calculateYear(String s) {
@@ -172,8 +198,8 @@ public class Main {
     }
 
     /**
-     * Sprawdza, czy dzień w PESELu jest poprawny dla danego miesiąca i roku.
-     * @param s Ciąg znaków PESEL.
+     * Sprawdza, czy dzień w peselu jest poprawny dla danego miesiąca i roku.
+     * @param s Ciąg znaków pesel.
      * @return Dzień jako liczba całkowita lub -1, jeśli dzień jest niepoprawny.
      */
     public static int validateDay(String s) {
@@ -191,8 +217,8 @@ public class Main {
     }
 
     /**
-     * Sprawdza płeć na podstawie PESELu.
-     * @param s Ciąg znaków PESEL.
+     * Sprawdza płeć na podstawie peselu.
+     * @param s Ciąg znaków pesel.
      * @return Płeć ("Kobieta" lub "Mężczyzna").
      */
     public static String checkGender(String s) {
@@ -200,8 +226,8 @@ public class Main {
     }
 
     /**
-     * Oblicza datę urodzenia na podstawie PESELu i zwraca ją jako ciąg znaków w formacie "yyyy-MM-dd".
-     * @param pesel Ciąg znaków PESEL.
+     * Oblicza datę urodzenia na podstawie peselu i zwraca ją jako ciąg znaków w formacie "yyyy-MM-dd".
+     * @param pesel Ciąg znaków pesel.
      * @return Data urodzenia jako ciąg znaków w formacie "yyyy-MM-dd".
      * @throws ParseException Jeśli nie można przekonwertować daty.
      * @throws IncorrectDayException Jeśli dzień jest niepoprawny.
